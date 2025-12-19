@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>中文文本纠错展示</title>
+    <link rel="stylesheet" href="/static/app.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="grain"></div>
+
+    <main class="app">
+      <header class="hero reveal">
+        <div class="badge">Soft-Masked BERT / DeepSeek / Qwen3</div>
+        <h1>中文文本纠错展示平台</h1>
+        <p class="lead">选择模型、输入文本，立即查看纠错结果与修改位置。</p>
+      </header>
+
+      <section class="panel reveal">
+        <div class="panel-header">
+          <h2>模型选择</h2>
+          <p class="subtle">Soft-Masked BERT 本地推理 / DeepSeek / Qwen3</p>
+        </div>
+        <div class="segmented" role="radiogroup" aria-label="Model selection">
+          <label class="seg">
+            <input type="radio" name="model" value="softmasked" checked />
+            <span>Soft-Masked BERT</span>
+          </label>
+          <label class="seg">
+            <input type="radio" name="model" value="deepseek" />
+            <span>DeepSeek-Chat</span>
+          </label>
+          <label class="seg">
+            <input type="radio" name="model" value="qwen" />
+            <span>Qwen3</span>
+          </label>
+        </div>
+        <div class="hint">使用 DeepSeek 或 Qwen3 可以支持更复杂的文本纠错。</div>
+      </section>
+
+      <section class="grid">
+        <div class="card reveal">
+          <div class="card-header">
+            <h3>输入文本</h3>
+            <button class="ghost" id="fill-sample">填入示例</button>
+          </div>
+          <textarea id="input-text" placeholder="请输入需要纠错的中文文本"></textarea>
+          <div class="actions">
+            <button id="run-btn" class="primary">开始纠错</button>
+            <span id="status" class="status"></span>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-header">
+            <h3>纠错结果</h3>
+          </div>
+          <div class="output">
+            <div class="label">纠错后文本</div>
+            <div id="corrected-text" class="result muted">等待输入</div>
+          </div>
+          <div class="output">
+            <div class="label">修改详情</div>
+            <ul id="edit-list" class="edit-list muted">
+              <li>暂无结果</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card reveal">
+        <div class="card-header">
+          <h3>原文预览</h3>
+        </div>
+        <div id="raw-text" class="result muted">等待输入</div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
